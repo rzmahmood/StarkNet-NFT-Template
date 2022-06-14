@@ -98,3 +98,11 @@ Add `NEW_MINTER_ADDRESS` to the `.env` file with the Starknet address of the con
 ```sh
 npm run add-minter
 ```
+
+### Grant Burning Permissions
+
+Add `NEW_BURNER_ADDRESS` to the `.env` file with the Starknet address of the contract which will be allowed to burn NFTs. Then run:
+
+```sh
+npm run add-burner
+```
