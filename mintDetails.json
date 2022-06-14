@@ -1,0 +1,16 @@
+{
+    "mintList": [
+        {
+            "address": "0x02dbd0137d0f036E04F1903497cD0e19E36037D826d4Ff710e9DEbc80379369c",
+            "tokenIds": [2, 3, 4, 5, 6, 7]
+        },
+        {
+            "address": "0x0201d00e9fd0b071ad4597f8b1f01e673b028db5c7a1aaf07e378879e56a26dc",
+            "tokenIds": [8, 9, 10]
+        },
+        {
+            "address": "0x07bdfc0dd4ef08f1910e31fa1a58bd2d5422a7232fb3256cf42b400ce96f9c91",
+            "tokenIds": [11, 12, 13]
+        }
+    ]
+}
