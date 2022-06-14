@@ -41,7 +41,7 @@ async function main() {
     "grantRole",
     {
       role: starknet.shortStringToBigInt("MINTER_ROLE"),
-      account: BigInt(NEW_MINTER_ADDRESS),
+      account: BigInt(process.env.NEW_MINTER_ADDRESS),
     },
     { maxFee: fee.amount * BigInt(2) }
   );
