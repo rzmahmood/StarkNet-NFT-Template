@@ -8,6 +8,7 @@
     "deploy-nft": "npx hardhat run scripts/deployNFT.js",
     "set-metadata": "npx hardhat run scripts/setMetadata.js",
     "mint-nfts": "npx hardhat run scripts/mintNFTs.js",
+    "add-minter": "npx hardhat run scripts/grantMinterRole.js",
     "setup": "npm install && pip install -r requirements.txt && npx hardhat starknet-compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

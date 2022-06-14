@@ -56,7 +56,7 @@ After that, run
 npm run deploy-nft
 ```
 
-This script will log the NFT Token Address and it will give permission to the Project Owner Address to mint NFTs. Save the logged NFT address in the `.env file next to `PROJECT_NFT_ADDRESS`
+This script will log the NFT Token Address and it will give permission to the Project Owner Address to mint NFTs. Save the logged NFT address in the `.env` file next to `PROJECT_NFT_ADDRESS`
 
 ## 3. Set NFT Metadata
 
@@ -88,3 +88,13 @@ Now that you've deployed your NFT, you may want to know more about the contract 
 You can also explore the deployed addresses using some browser tools like the [Voyager block explorer](https://goerli.voyager.online/). 
 You can also learn more about customizing your NFT! Want to add cool GameFi to your NFT?
 To customize it, you'll need to learn more about Cairo and StarkNet. For that visit https://starknet.io/building-on-starknet/ which will guide you to various resources. You can also ask for help in the #starknet channel on the [Immutable X Discord](https://discord.com/channels/765480457256042496/978781372535701524)
+
+## Extensions
+
+### Grant Minting Permissions
+
+Add `NEW_MINTER_ADDRESS` to the `.env` file with the Starknet address of the contract which will be allowed to mint NFTs. Then run:
+
+```sh
+npm run add-minter
+```
