@@ -31,6 +31,8 @@ We have a few predefined scripts which cover all the common functionality. First
 
 ## 1. Create Account
 
+WARN: Currently you cannot export your ArgentX wallet Private Key and must use an OpenZeppelin Account due to the following bug https://github.com/Shard-Labs/starknet-hardhat-plugin/issues/117
+
 To create an account, simply run the following. It will deploy an account to the network defined in your hardhat.config.js. It will log the address and private key of the account which you can save for later.
 
 ```sh
