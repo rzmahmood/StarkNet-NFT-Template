@@ -31,7 +31,7 @@ We have a few predefined scripts which cover all the common functionality. First
 
 ## 1. Create Account
 
-WARN: Currently you cannot export your ArgentX wallet Private Key and must use an OpenZeppelin Account due to the following bug https://github.com/Shard-Labs/starknet-hardhat-plugin/issues/117
+WARN: Currently you cannot export your ArgentX/Braavos Private Key and must use an OpenZeppelin Account due to the following bug https://github.com/Shard-Labs/starknet-hardhat-plugin/issues/117
 
 To create an account, simply run the following. It will deploy an account to the network defined in your hardhat.config.js. It will log the address and private key of the account which you can save for later.
 
@@ -80,9 +80,10 @@ To mint NFTs, we'll be using the mintDetails.json file. It is prefilled with ran
 npm run mint-nfts
 ```
 
-This will mint the NFTs to the appropriate owners. If you have a browser wallet like ArgentX, you can view the NFTs in your wallet in the collectibles section:
+This will mint the NFTs to the appropriate owners. If you have a browser wallet like ArgentX or Braavos, you can view the NFTs in your wallet in the collectibles section:
 
 ![Hero](https://miro.medium.com/max/966/1*N26Gtbx_yDtylKwvGx9IxQ.png)
+
 
 ## Next Steps
 
