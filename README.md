@@ -2,7 +2,8 @@
 
 ## Trouble Shooting
 
-For any issues, visit the #starknet channel in the Immutable X Discord, where I'm frequently active. Alternatively, raise a Github Issue.
+For any issues, visit the #starknet channel in the Immutable X Discord, where I'm frequently active. Alternatively, raise a Github Issue. 
+Also see the FAQ at the bottom
 
 ## Setup
 
@@ -109,3 +110,15 @@ Add `NEW_BURNER_ADDRESS` to the `.env` file with the Starknet address of the con
 ```sh
 npm run add-burner
 ```
+
+# FAQ / Errors
+
+Issue: `Error: AccessControl: account is missing role`
+
+Solution: You are either trying to mint or burn an NFT using an account that does not had permission. You can grant the account permission by seeing [Grant Minting Permissions](#Grant-Minting-Permissions)
+
+
+
+
+
+
