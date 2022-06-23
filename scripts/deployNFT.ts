@@ -1,14 +1,10 @@
-const starknet = require("hardhat").starknet;
-require("dotenv").config();
+import { starknet } from "hardhat";
+import dotenv from "dotenv";
+import { getAccount } from "./utils/getAccount";
+dotenv.config();
 
 async function main() {
-  if (
-    process.env.STARKNET_PKEY == null ||
-    process.env.STARKNET_ADDRESS == null
-  ) {
-    console.log(`STARKNET_PKEY and/or STARKNET_ADDRESS are not set`);
-    process.exit(1);
-  }
+  const myAccount = await getAccount();
   if (process.env.PROJECT_NAME == null) {
     console.log("PROJECT_NAME is not set");
     process.exit(1);
@@ -34,12 +30,6 @@ async function main() {
     process.exit(1);
   }
 
-  const myAccount = await starknet.getAccountFromAddress(
-    process.env.STARKNET_ADDRESS,
-    process.env.STARKNET_PKEY,
-    "OpenZeppelin"
-  );
-
   // The constructor for ERC721_Full takes a name, symbol, owner,
   // default_royalty_receiver and default_royalty_fee_basis points.
   // In this example, we set royalties to 5%.
@@ -53,6 +43,7 @@ async function main() {
 
   // The contract factory is the name of the cairo file your NFT without the .cairo
   const nftFactory = await starknet.getContractFactory("nft_contract");
+  console.log("Deploying NFT...");
   const nftContract = await nftFactory.deploy({
     name,
     symbol,

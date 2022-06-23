@@ -1,4 +1,4 @@
-require("@shardlabs/starknet-hardhat-plugin");
+import "@shardlabs/starknet-hardhat-plugin";
 
 module.exports = {
   starknet: {

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create-account": "npx hardhat run scripts/createAccount.js",
-    "deploy-nft": "npx hardhat run scripts/deployNFT.js",
+    "create-account": "npx hardhat run scripts/createAccount.ts",
+    "deploy-nft": "npx hardhat run scripts/deployNFT.ts",
     "set-metadata": "npx hardhat run scripts/setMetadata.js",
     "mint-nfts": "npx hardhat run scripts/mintNFTs.js",
     "add-minter": "npx hardhat run scripts/grantMinterRole.js",
@@ -15,7 +15,9 @@
   },
   "devDependencies": {
     "@shardlabs/starknet-hardhat-plugin": "^0.5.5",
-    "hardhat": "^2.9.9"
+    "hardhat": "^2.9.9",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "dotenv": "^16.0.1"
