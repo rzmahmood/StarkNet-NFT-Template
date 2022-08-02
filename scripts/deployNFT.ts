@@ -15,11 +15,6 @@ async function main() {
     process.exit(1);
   }
 
-  if (process.env.PROJECT_OWNER_ADDRESS == null) {
-    console.log("PROJECT_OWNER_ADDRESS is not set");
-    process.exit(1);
-  }
-
   if (process.env.PROJECT_ROYALTY_RECEIVER == null) {
     console.log("PROJECT_ROYALTY_RECEIVER is not set");
     process.exit(1);
@@ -35,7 +30,7 @@ async function main() {
   // In this example, we set royalties to 5%.
   const name = starknet.shortStringToBigInt(process.env.PROJECT_NAME);
   const symbol = starknet.shortStringToBigInt(process.env.PROJECT_SYMBOL);
-  const owner = BigInt(process.env.PROJECT_OWNER_ADDRESS);
+  const owner = myAccount.address;
   const default_royalty_receiver = BigInt(process.env.PROJECT_ROYALTY_RECEIVER);
   const default_royalty_fee_basis_points = BigInt(
     process.env.PROJECT_ROYALTY_FEE_BP
