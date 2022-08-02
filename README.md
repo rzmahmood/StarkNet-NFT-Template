@@ -2,7 +2,7 @@
 
 ## Trouble Shooting
 
-For any issues, visit the #starknet channel in the Immutable X Discord, where I'm frequently active. Alternatively, raise a Github Issue. 
+For any issues, visit the #starknet channel in the Immutable X Discord, where I'm frequently active. Alternatively, raise a Github Issue.
 Also see the FAQ at the bottom
 
 ## Setup
@@ -32,15 +32,25 @@ We have a few predefined scripts which cover all the common functionality. First
 
 ## 1. Create Account
 
-WARN: Currently you cannot export your ArgentX/Braavos Private Key and must use an OpenZeppelin Account due to the following bug https://github.com/Shard-Labs/starknet-hardhat-plugin/issues/117
-
-To create an account, simply run the following. It will deploy an account to the network defined in your hardhat.config.js. It will log the address and private key of the account which you can save for later.
+To create an account, simply run the following. It will deploy an OpenZeppelin account to the network defined in your hardhat.config.js. It will log the address and private key of the account which you can save for later.
 
 ```sh
 npm run create-account
 ```
 
 Once you can see the address of the account, visit the [official StarkNet goerli faucet](https://faucet.goerli.starknet.io/) and request some testnet Ether to your address. After that, rename the `.example.env` file to `.env` and replace `STARKNET_PKEY` and `STARKNET_ADDRESS` with your newly created variables.
+
+If you already have an Account, for example, through your ArgentX Wallet, you can use that instead. To use the ArgentX Wallet, you can export your private key.
+
+Once exported, ensure it is converted to hex format, which can be done on websites like https://www.rapidtables.com/convert/number/decimal-to-hex.html . Ensure that you prepend 0x to the result. For example
+
+12345958648159382388738418296047148877424070165246026723529953029760501683
+
+will become
+
+0x6FCD10EBADDC5BEE836F1B8BE0A83E7D00A444FB0200EF76F9AFB203047B3
+
+You can then put your ArgentX address and private key in the STARKNET_ADDRESS and STARKNET_PKEY variables of the .env file. Also update STARKNET_ACCOUNT_TYPE to "Argent".
 
 ## 2. Deploy NFT Contract
 
@@ -85,7 +95,6 @@ This will mint the NFTs to the appropriate owners. If you have a browser wallet 
 
 ![Hero](https://miro.medium.com/max/966/1*N26Gtbx_yDtylKwvGx9IxQ.png)
 
-
 ## Next Steps
 
 Now that you've deployed your NFT, you may want to know more about the contract you've deployed. For that, visit https://immutablex.medium.com/starknet-contracts-v1-0-ded55d4dcb05
@@ -117,8 +126,6 @@ Issue: `Error: AccessControl: account is missing role`
 
 Solution: You are either trying to mint or burn an NFT using an account that does not had permission. You can grant the account permission by seeing [Grant Minting Permissions](#Grant-Minting-Permissions)
 
+Issue: `The provided private key is not compatible with the public key stored in the contract.`
 
-
-
-
-
+Solution: Convert the Argent Private Key into Hex format. Do this by pasting your private key here https://www.rapidtables.com/convert/number/decimal-to-hex.html and prepending `0x` to the beginning of the result

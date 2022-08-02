@@ -27,7 +27,7 @@ export async function getAccount(): Promise<Account> {
       break;
     }
     case "Argent": {
-      throw "ARGENT Wallet currently has issues and is not supported";
+      break;
     }
     default: {
       throw "STARKNET_ACCOUNT_TYPE not supported";
