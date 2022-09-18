@@ -1,5 +1,6 @@
 const starknet = require("hardhat").starknet;
 const strToFeltArr = require("./utils").strToFeltArr;
+const getAccount = require("./utils/getAccount").getAccount;
 require("dotenv").config();
 
 async function main() {
@@ -24,11 +25,7 @@ async function main() {
   const NFTFactory = await starknet.getContractFactory("nft_contract");
   const nftContract = NFTFactory.getContractAt(process.env.PROJECT_NFT_ADDRESS);
 
-  const myAccount = await starknet.getAccountFromAddress(
-    process.env.STARKNET_ADDRESS,
-    process.env.STARKNET_PKEY,
-    "OpenZeppelin"
-  );
+  const myAccount = await getAccount();
 
   // url must be converted to a felt array as that is the functions input type
   const baseTokenURI = strToFeltArr(process.env.PROJECT_BASE_URI);

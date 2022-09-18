@@ -2,6 +2,8 @@ const mintDetails = require("../mintDetails.json");
 const starknet = require("hardhat").starknet;
 const fromUint256WithFelts = require("./utils").fromUint256WithFelts;
 const toUint256WithFelts = require("./utils").toUint256WithFelts;
+const getAccount = require("./utils/getAccount").getAccount;
+
 require("dotenv").config();
 
 async function main() {
@@ -21,11 +23,7 @@ async function main() {
   const NFTFactory = await starknet.getContractFactory("nft_contract");
   const nftContract = NFTFactory.getContractAt(process.env.PROJECT_NFT_ADDRESS);
 
-  const myAccount = await starknet.getAccountFromAddress(
-    process.env.STARKNET_ADDRESS,
-    process.env.STARKNET_PKEY,
-    "OpenZeppelin"
-  );
+  const myAccount = await getAccount();
 
   let interactionArray = [];
   for (const acc of mintDetails.mintList) {
