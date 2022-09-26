@@ -1,2 +1,2 @@
-cairo-lang==0.9.1
-immutablex-starknet==0.2.1
+cairo-lang==0.10.0
+immutablex-starknet==0.3.0
