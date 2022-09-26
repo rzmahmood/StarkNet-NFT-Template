@@ -1,23 +1,18 @@
-const mintDetails = require("../mintDetails.json");
-const starknet = require("hardhat").starknet;
-const fromUint256WithFelts = require("./utils").fromUint256WithFelts;
-const toUint256WithFelts = require("./utils").toUint256WithFelts;
-const getAccount = require("./utils/getAccount").getAccount;
+import mintDetails from "../mintDetails.json";
+import { fromUint256WithFelts, toUint256WithFelts } from "./utils";
+import { starknet } from "hardhat";
+import { getAccount } from "./utils/getAccount";
 
-require("dotenv").config();
-
-async function main() {
+export async function mintNFTs() {
   if (
     process.env.STARKNET_PKEY == null ||
     process.env.STARKNET_ADDRESS == null
   ) {
-    console.log(`STARKNET_PKEY and/or STARKNET_ADDRESS are not set`);
-    process.exit(1);
+    throw `STARKNET_PKEY and/or STARKNET_ADDRESS are not set`;
   }
 
   if (process.env.PROJECT_NFT_ADDRESS == null) {
-    console.log(`PROJECT_NFT_ADDRESS not set`);
-    process.exit(1);
+    throw `PROJECT_NFT_ADDRESS not set`;
   }
 
   const NFTFactory = await starknet.getContractFactory("nft_contract");
@@ -48,13 +43,3 @@ async function main() {
   });
   console.log(`Minted NFTs successfully with TxHash ${txHash}`);
 }
-
-main()
-  .then(() => {
-    console.log("Finished successfully");
-    process.exit(0);
-  })
-  .catch((x) => {
-    console.log(`Failed to run: ${x.toString()}`);
-    process.exit(1);
-  });

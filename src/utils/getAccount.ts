@@ -1,11 +1,6 @@
 import { starknet } from "hardhat";
-import dotenv from "dotenv";
-import {
-  Account,
-  ArgentAccount,
-} from "@shardlabs/starknet-hardhat-plugin/dist/src/account";
+import { Account } from "@shardlabs/starknet-hardhat-plugin/dist/src/account";
 import { AccountImplementationType } from "@shardlabs/starknet-hardhat-plugin/dist/src/types";
-dotenv.config();
 
 export async function getAccount(): Promise<Account> {
   if (!process.env.STARKNET_PKEY || !process.env.STARKNET_ADDRESS) {

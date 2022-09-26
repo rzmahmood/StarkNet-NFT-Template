@@ -1,4 +1,7 @@
-import { createAccount as main } from "../src/createAccount";
+import { setMetadata as main } from "../src/setMetadata";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 main()
   .then(() => {

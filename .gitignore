@@ -9,6 +9,7 @@ artifacts
 __pycache__
 .pytest_cache
 cairo-venv
+cairo_venv
 
 #Starknet plugin
 starknet-artifacts

@@ -1,4 +1,7 @@
-import { createAccount as main } from "../src/createAccount";
+import { grantMinterRole as main } from "../src/grantMinterRole";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 main()
   .then(() => {

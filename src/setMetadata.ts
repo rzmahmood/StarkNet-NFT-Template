@@ -1,25 +1,21 @@
-const starknet = require("hardhat").starknet;
-const strToFeltArr = require("./utils").strToFeltArr;
-const getAccount = require("./utils/getAccount").getAccount;
-require("dotenv").config();
+import { starknet } from "hardhat";
+import { getAccount } from "./utils/getAccount";
+import { strToFeltArr } from "./utils";
 
-async function main() {
+export async function setMetadata() {
   if (
     process.env.STARKNET_PKEY == null ||
     process.env.STARKNET_ADDRESS == null
   ) {
-    console.log(`STARKNET_PKEY and/or STARKNET_ADDRESS are not set`);
-    process.exit(1);
+    throw `STARKNET_PKEY and/or STARKNET_ADDRESS are not set`;
   }
 
   if (process.env.PROJECT_NFT_ADDRESS == null) {
-    console.log(`PROJECT_NFT_ADDRESS not set`);
-    process.exit(1);
+    throw `PROJECT_NFT_ADDRESS not set`;
   }
 
   if (process.env.PROJECT_BASE_URI == null) {
-    console.log(`PROJECT_BASE_URI not set`);
-    process.exit(1);
+    throw `PROJECT_BASE_URI not set`;
   }
 
   const NFTFactory = await starknet.getContractFactory("nft_contract");
@@ -42,13 +38,3 @@ async function main() {
   );
   console.log(`baseURI set to ${process.env.PROJECT_BASE_URI}`);
 }
-
-main()
-  .then(() => {
-    console.log("finished successfully");
-    process.exit(0);
-  })
-  .catch((x) => {
-    console.log(`Failed to run: ${x.toString()}`);
-    process.exit(1);
-  });
