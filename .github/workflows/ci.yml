@@ -44,15 +44,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Set up Poetry
-        uses: abatilo/actions-poetry@v2.0.0
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          poetry install
+          npm run setup
       - name: Run Cairo Format
         run: |
-          find . -type f -name "*.cairo" -exec bash -c 'i="$1"; poetry run cairo-format $i | diff $i - >/dev/null 2>&1 && echo $i _PASSED_TEST_ || echo $i _FAILED_TEST_ | tee -a cairo-format-test.log' bash {} \;
+          find . -type f -name "*.cairo" -exec bash -c 'i="$1"; cairo-format $i | diff $i - >/dev/null 2>&1 && echo $i _PASSED_TEST_ || echo $i _FAILED_TEST_ | tee -a cairo-format-test.log' bash {} \;
           test -f cairo-format-test.log && echo Failed cairo-format test && exit 1
           echo "Passed Cairo Format test"
 
