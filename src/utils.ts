@@ -1,6 +1,7 @@
-const uint256 = require("starknet").uint256;
+import { uint256 } from "starknet";
+import { BigNumberish } from "starknet/dist/utils/number";
 
-function toUint256WithFelts(num) {
+export function toUint256WithFelts(num: BigNumberish) {
   const n = uint256.bnToUint256(num);
   return {
     low: BigInt(n.low.toString()),
@@ -10,14 +11,14 @@ function toUint256WithFelts(num) {
 
 // This is a utility function which helps us convert the Uint256 response
 // in Cairo to a number
-function fromUint256WithFelts(uint256WithFelts) {
+export function fromUint256WithFelts(uint256WithFelts: any) {
   return uint256.uint256ToBN({
     low: uint256WithFelts.low.toString(),
     high: uint256WithFelts.high.toString(),
   });
 }
 
-function strToFeltArr(str) {
+export function strToFeltArr(str: string) {
   const size = Math.ceil(str.length / 31);
   const arr = Array(size);
 
@@ -39,16 +40,10 @@ function strToFeltArr(str) {
  * @param {bigint[]} felts - The array of encoded short strings
  * @returns {string} - The readable string
  */
-function feltArrToStr(felts) {
+export function feltArrToStr(felts: any) {
   return felts.reduce(
-    (memo, felt) => memo + Buffer.from(felt.toString(16), "hex").toString(),
+    (memo: any, felt: any) =>
+      memo + Buffer.from(felt.toString(16), "hex").toString(),
     ""
   );
 }
-
-module.exports = {
-  toUint256WithFelts,
-  fromUint256WithFelts,
-  feltArrToStr,
-  strToFeltArr,
-};

@@ -1,4 +1,7 @@
-import { createAccount as main } from "../src/createAccount";
+import { mintNFTs as main } from "../src/mintNFTs";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 main()
   .then(() => {

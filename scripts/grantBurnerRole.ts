@@ -1,4 +1,7 @@
-import { createAccount as main } from "../src/createAccount";
+import { grantBurnerRole as main } from "../src/grantBurnerRole";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 main()
   .then(() => {

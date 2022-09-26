@@ -4,22 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create-account": "npx hardhat run scripts/createAccount.ts",
-    "deploy-nft": "npx hardhat run scripts/deployNFT.ts",
-    "set-metadata": "npx hardhat run scripts/setMetadata.js",
-    "mint-nfts": "npx hardhat run scripts/mintNFTs.js",
-    "add-minter": "npx hardhat run scripts/grantMinterRole.js",
-    "add-burner": "npx hardhat run scripts/grantBurnerRole.js",
-    "setup": "npm install && pip install -r requirements.txt && npx hardhat starknet-compile",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create-account": "poetry run npx hardhat run scripts/createAccount.ts",
+    "deploy-nft": "poetry run npx hardhat run scripts/deployNFT.ts",
+    "set-metadata": "poetry run npx hardhat run scripts/setMetadata.js",
+    "mint-nfts": "poetry run npx hardhat run scripts/mintNFTs.js",
+    "add-minter": "poetry run npx hardhat run scripts/grantMinterRole.js",
+    "add-burner": "poetry run npx hardhat run scripts/grantBurnerRole.js",
+    "setup": "npm install && poetry install && poetry run npx hardhat starknet-compile",
+    "test": "poetry run npx hardhat test"
   },
   "devDependencies": {
-    "@shardlabs/starknet-hardhat-plugin": "^0.6.4",
-    "hardhat": "^2.10.2",
+    "@shardlabs/starknet-hardhat-plugin": "^0.6.6",
+    "@types/mocha": "^9.1.1",
+    "hardhat": "^2.11.1",
+    "mocha": "^10.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.3"
   },
   "dependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.2"
   }
 }

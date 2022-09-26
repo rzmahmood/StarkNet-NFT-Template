@@ -1,24 +1,20 @@
-const starknet = require("hardhat").starknet;
-const getAccount = require("./utils/getAccount").getAccount;
-require("dotenv").config();
+import { starknet } from "hardhat";
+import { getAccount } from "./utils/getAccount";
 
-async function main() {
+export async function grantBurnerRole() {
   if (
     process.env.STARKNET_PKEY == null ||
     process.env.STARKNET_ADDRESS == null
   ) {
-    console.log(`STARKNET_PKEY and/or STARKNET_ADDRESS are not set`);
-    process.exit(1);
+    throw `STARKNET_PKEY and/or STARKNET_ADDRESS are not set`;
   }
 
   if (process.env.PROJECT_NFT_ADDRESS == null) {
-    console.log(`PROJECT_NFT_ADDRESS not set`);
-    process.exit(1);
+    throw `PROJECT_NFT_ADDRESS not set`;
   }
 
   if (process.env.NEW_BURNER_ADDRESS == null) {
-    console.log(`NEW_BURNER_ADDRESS not set`);
-    process.exit(1);
+    throw `NEW_BURNER_ADDRESS not set`;
   }
 
   const NFTFactory = await starknet.getContractFactory("nft_contract");
@@ -42,13 +38,3 @@ async function main() {
   );
   console.log(`Burning permissions given to ${process.env.NEW_BURNER_ADDRESS}`);
 }
-
-main()
-  .then(() => {
-    console.log("finished successfully");
-    process.exit(0);
-  })
-  .catch((x) => {
-    console.log(`Failed to run: ${x.toString()}`);
-    process.exit(1);
-  });
