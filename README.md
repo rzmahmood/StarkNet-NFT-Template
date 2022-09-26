@@ -16,11 +16,12 @@ git clone https://github.com/rzmahmood/StarkNet-NFT-Template.git
 cd StarkNet-NFT-Template
 ```
 
-We'll create a virtualenv and activate it, then install our dependencies and compile our contracts:
+We now need to install poetry, which is a dependency management tool, like npm but for python.
+Visit the [poetry documentation for installation instructions](https://python-poetry.org/docs/#installation). Make sure to add `poetry` to your PATH which you will be prompted to do as part of the installation.
+
+We'll now install our dependencies and compile our contracts:
 
 ```sh
-python3 -m venv cairo-venv
-source cairo-venv/bin/activate
 npm run setup
 ```
 
@@ -28,7 +29,7 @@ Now that we've installed our dependencies and setup our contracts, we can review
 
 We're using the Immutable X NFT preset for our project. The preset includes the ability to add token metadata, contract metadata, and token royalties. It can also be used for bridging back to L1. You can find more information on it [here](https://immutablex.medium.com/erc721-on-starknet-57832d9d8c30).
 
-We have a few predefined scripts which cover all the common functionality. First you're going to want a StarkNet account which you can use to deploy your NFT contract and mint NFTs. All of the scripts will be run while in the virtualenv
+We have a few predefined scripts which cover all the common functionality. First you're going to want a StarkNet account which you can use to deploy your NFT contract and mint NFTs.
 
 ## 1. Create Account
 
@@ -129,3 +130,7 @@ Solution: You are either trying to mint or burn an NFT using an account that doe
 Issue: `The provided private key is not compatible with the public key stored in the contract.`
 
 Solution: Convert the Argent Private Key into Hex format. Do this by pasting your private key here https://www.rapidtables.com/convert/number/decimal-to-hex.html and prepending `0x` to the beginning of the result
+
+Issue: `dyld: Library not loaded error while installing poetry`
+
+Solution: https://github.com/python-poetry/poetry/issues/5109#issuecomment-1166458685 . Copy the contents of the page at https://install.python-poetry.org to a local file called local_poetry_installer. Then replace the line `builder = venv.EnvBuilder(clear=True, with_pip=True, symlinks=False)` with `builder = venv.EnvBuilder(clear=True, with_pip=True, symlinks=True)`. Then run `cat local_poetry_installer | python3 -`
