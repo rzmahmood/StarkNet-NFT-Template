@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@shardlabs/starknet-hardhat-plugin": "^0.6.7",
-    "@types/mocha": "^9.1.1",
+    "@types/mocha": "^10.0.0",
     "hardhat": "^2.12.0",
     "mocha": "^10.0.0",
     "ts-node": "^10.9.1",
