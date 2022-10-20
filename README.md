@@ -41,7 +41,7 @@ npm run create-account
 
 Once you can see the address of the account, visit the [official StarkNet goerli faucet](https://faucet.goerli.starknet.io/) and request some testnet Ether to your address. After that, rename the `.example.env` file to `.env` and replace `STARKNET_PKEY` and `STARKNET_ADDRESS` with your newly created variables.
 
-If you already have an Account, for example, through your ArgentX Wallet, you can use that instead. To use the ArgentX Wallet, you can export your private key.
+If you already have an Account, for example, through your ArgentX Wallet, you can use that instead. To use the ArgentX Wallet, you can export your private key. Also update STARKNET_ACCOUNT_TYPE to "Argent" in the .env file
 
 Once exported, ensure it is converted to hex format, which can be done on websites like https://www.rapidtables.com/convert/number/decimal-to-hex.html . Ensure that you prepend 0x to the result. For example
 
@@ -134,3 +134,26 @@ Solution: Convert the Argent Private Key into Hex format. Do this by pasting you
 Issue: `dyld: Library not loaded error while installing poetry`
 
 Solution: https://github.com/python-poetry/poetry/issues/5109#issuecomment-1166458685 . Copy the contents of the page at https://install.python-poetry.org to a local file called local_poetry_installer. Then replace the line `builder = venv.EnvBuilder(clear=True, with_pip=True, symlinks=False)` with `builder = venv.EnvBuilder(clear=True, with_pip=True, symlinks=True)`. Then run `cat local_poetry_installer | python3 -`
+
+Issue: `Failed to run: StarknetPluginError: Could not perform call on getSigner.
+Got BadRequest while trying to access https://alpha4.starknet.io/feeder_gateway/call_contract?blockNumber=pending. Status code: 500; text: {"code": "StarknetErrorCode.ENTRY_POINT_NOT_FOUND_IN_CONTRACT", "message": "Error at pc=0:12:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:161)
+Unknown location (pc=0:147)
+
+Error in the called contract (0x2dbd0137d0f036e04f1903497cd0e19e36037d826d4ff710e9debc80379369c):
+Entry point 0x239e10ae97b247b05959d468aa46c8d2a3ecdc7802dcf7ba10b891b9c08a372 not found in contract with class hash 0x3e327de1c40540b98d05cbcb13552008e36f0ec8d61d46956d2f9752c294328."}`
+
+Solution: This is an issue with new release and various organisations not being synchronised with releases. Your agrent account may be an older version. Run `npm i @shardlabs/starknet-hardhat-plugin@0.6.6 --save-dev` and try again
+
+Issue: `Got BadRequest while trying to access https://alpha4.starknet.io/feeder_gateway/call_contract?blockNumber=pending. Status code: 500; text: {"code": "StarknetErrorCode.ENTRY_POINT_NOT_FOUND_IN_CONTRACT", "message": "Error at pc=0:12:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:161)
+Unknown location (pc=0:147)
+
+Error in the called contract (0x869c7bdbbe93da5fef32f592596a7c6d841e58fefededb442a9f919c18e73b):
+Entry point 0x1a6c6a0bdec86cc645c91997d8eea83e87148659e3e61122f72361fd5e94079 not found in contract with class hash 0x3e327de1c40540b98d05cbcb13552008e36f0ec8d61d46956d2f9752c294328."}`
+
+Solution: Make sure to update your `.env` file to Argent if using an Argent wallet
