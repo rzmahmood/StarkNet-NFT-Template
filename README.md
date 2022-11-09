@@ -41,7 +41,7 @@ npm run create-account
 
 Once you can see the address of the account, visit the [official StarkNet goerli faucet](https://faucet.goerli.starknet.io/) and request some testnet Ether to your address. After that, rename the `.example.env` file to `.env` and replace `STARKNET_PKEY` and `STARKNET_ADDRESS` with your newly created variables.
 
-_NOTE: ArgentX hasn't upgraded the Account Contract in their Browser wallet yet and using an ArgentX wallet is currently not possible_
+_NOTE: ArgentX hasn't upgraded the Account Contract in their Browser wallet yet and using an ArgentX wallet is currently not possible. However, you can still mint NFTs to your Argent Browser wallet and interact with them there._
 
 ## 2. Deploy NFT Contract
 
