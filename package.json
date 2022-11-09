@@ -6,15 +6,14 @@
   "scripts": {
     "create-account": "poetry run npx hardhat run scripts/createAccount.ts",
     "deploy-nft": "poetry run npx hardhat run scripts/deployNFT.ts",
-    "set-metadata": "poetry run npx hardhat run scripts/setMetadata.js",
-    "mint-nfts": "poetry run npx hardhat run scripts/mintNFTs.js",
-    "add-minter": "poetry run npx hardhat run scripts/grantMinterRole.js",
-    "add-burner": "poetry run npx hardhat run scripts/grantBurnerRole.js",
+    "set-metadata": "poetry run npx hardhat run scripts/setMetadata.ts",
+    "mint-nfts": "poetry run npx hardhat run scripts/mintNFTs.ts",
+    "add-minter": "poetry run npx hardhat run scripts/grantMinterRole.ts",
+    "add-burner": "poetry run npx hardhat run scripts/grantBurnerRole.ts",
     "setup": "npm install && poetry install && poetry run npx hardhat starknet-compile",
     "test": "poetry run npx hardhat test"
   },
   "devDependencies": {
-    "@shardlabs/starknet-hardhat-plugin": "^0.6.6",
     "@types/mocha": "^10.0.0",
     "hardhat": "^2.12.0",
     "mocha": "^10.1.0",
@@ -22,6 +21,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@shardlabs/starknet-hardhat-plugin": "^0.6.6",
     "dotenv": "^16.0.3"
   }
 }
